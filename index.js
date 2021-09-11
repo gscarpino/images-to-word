@@ -21,13 +21,11 @@ const {
 
 async function start() {
 
-  //Load images
   console.log('Loading images...');
   const imagesPaths = await globProm('./images/*.*');
   console.log('Images loaded');
 
   console.log('Sorting images...');
-  //Sort images
   imagesPaths.sort((f1, f2) => {
     const fileName1 = f1.substring(f1.lastIndexOf('/') + 1, f1.lastIndexOf('.'));
     const fileName2 = f2.substring(f2.lastIndexOf('/') + 1, f2.lastIndexOf('.'));
@@ -39,7 +37,6 @@ async function start() {
       return parseInt(fileName1) - parseInt(fileName2);
     }
   });
-
   console.log('Images sorted');
 
   const imagesProm = imagesPaths.map(async imagePath => {
